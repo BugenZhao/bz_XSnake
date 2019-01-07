@@ -1,0 +1,23 @@
+160
+46
+200
+31
+1
+31
+
+
+// 1. width of the gamepad, 0 = 80
+// 2. height of the gamepad, 0 = 30
+// 3. the initial number of food dots, 0 = 6
+// 4. the default interval time, 0 = 130 ms
+// 5. the minimum interval time, 0 = 40 ms
+// 6. the maximum interval time, 0 = 160 ms
+
+
+crazy mode:
+160
+46
+200
+31
+1
+31
