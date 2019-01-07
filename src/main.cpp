@@ -25,7 +25,7 @@ int min_time, max_time;
 short default_x, default_y, default_y_p2;
 
 //initialize the waiting time after game-over
-const int waiting_time = 5000;
+const int waiting_time = 500;
 
 //initialize the default welcome_choice
 int welcome_choice = 0;
@@ -550,7 +550,7 @@ inline bool game_over()
     if (!double_game && head == nullptr)
     {
         default_coord.move_to(max_x + 9, default_y_p2 + 5);
-        set_color(yellow, 1, 1);
+        set_color(red, yellow);
         default_coord.fill_in(" Game Over. ");
         return true;
     }
@@ -566,14 +566,14 @@ inline bool game_over()
         else if (head == nullptr)
         {
             default_coord.move_to(max_x + 9, default_y_p2 + 5);
-            set_color(yellow, 1, 1);
+            set_color(red, yellow);
             default_coord.fill_in(" P2 Win. ");
             return true;
         }
         else if (head_p2 == nullptr)
         {
             default_coord.move_to(max_x + 9, default_y_p2 + 5);
-            set_color(yellow, 1, 1);
+            set_color(red, yellow);
             default_coord.fill_in(" P1 Win. ");
             return true;
         }
@@ -583,7 +583,7 @@ inline bool game_over()
     if (!double_game && check_bite(head, head))
     {
         default_coord.move_to(max_x + 9, default_y_p2 + 5);
-        set_color(yellow, 1, 1);
+        set_color(red, yellow);
         default_coord.fill_in(" Game Over. ");
         return true;
     }
@@ -594,21 +594,21 @@ inline bool game_over()
         if (p1_lose && p2_lose)
         {
             default_coord.move_to(max_x + 9, default_y_p2 + 5);
-            set_color(yellow, 1, 1);
+            set_color(red, yellow);
             default_coord.fill_in(" Draw. ");
             return true;
         }
         else if (p1_lose)
         {
             default_coord.move_to(max_x + 9, default_y_p2 + 5);
-            set_color(yellow, 1, 1);
+            set_color(red, yellow);
             default_coord.fill_in(" P2 Win. ");
             return true;
         }
         else if (p2_lose)
         {
             default_coord.move_to(max_x + 9, default_y_p2 + 5);
-            set_color(yellow, 1, 1);
+            set_color(red, yellow);
             default_coord.fill_in(" P1 Win. ");
             return true;
         }
@@ -690,16 +690,16 @@ main_begin:
         }
 
         //print scores
-        default_coord.move_to(max_x + 20, default_y);
+        default_coord.move_to(max_x + 19, default_y);
         printf("%d", score);
         if (double_game)
         {
-            default_coord.move_to(max_x + 20, default_y + 2);
+            default_coord.move_to(max_x + 19, default_y + 2);
             printf("%d", score_p2);
         }
 
         //show current time
-        time_coord.move_to(max_x + 13, default_y - 5);
+        time_coord.move_to(max_x + 12, default_y - 5);
         cur_time = clock();
         game_clock.set_time((cur_time - start_time) / 1000);
         game_clock.print();
@@ -838,6 +838,13 @@ main_begin:
                 }
             }
             Sleep(waiting_time);
+            default_coord.move_to(max_x + 5, default_y_p2 + 7);
+            set_color(yellow, 1, 1);
+            default_coord.fill_in("SPACE to continue...");
+            do
+            {
+                Sleep(200);
+            } while (!GetAsyncKeyState(VK_SPACE));
             goto main_begin;
         }
 
