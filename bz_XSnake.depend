@@ -1,0 +1,107 @@
+# depslib dependency file v1.0
+1546783953 source:e:\xsnake_cb\main.cpp
+	"bz_base_coord.h"
+	"bz_clock.h"
+	"bz_color.h"
+	"bz_coord.h"
+	"bz_food.h"
+	"bz_keys.h"
+	"bz_snake.h"
+	"bz_win.h"
+
+1546770513 e:\xsnake_cb\bz_base_coord.h
+	<windows.h>
+
+1544411822 e:\xsnake_cb\bz_clock.h
+	<iomanip>
+	<iostream>
+
+1546770514 e:\xsnake_cb\bz_color.h
+	<windows.h>
+
+1546740440 e:\xsnake_cb\bz_coord.h
+	<algorithm>
+	<conio.h>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iomanip>
+	<iostream>
+	<limits>
+	<map>
+	<set>
+	<stdexcept>
+	<thread>
+	<vector>
+	<windows.h>
+	"bz_base_coord.h"
+
+1544409334 e:\xsnake_cb\bz_food.h
+	"bz_base_coord.h"
+	"bz_color.h"
+
+1544408081 e:\xsnake_cb\bz_keys.h
+
+1546766565 e:\xsnake_cb\bz_snake.h
+	"bz_base_coord.h"
+	"bz_color.h"
+
+1546777767 e:\xsnake_cb\bz_win.h
+	<windows.h>
+
+1546771358 source:e:\xsnake_cb\icon.rc
+
+1546771358 source:e:\xsnake_cb\rc\icon.rc
+
+1546835211 source:e:\xsnake_cb\src\main.cpp
+	"bz_base_coord.h"
+	"bz_clock.h"
+	"bz_color.h"
+	"bz_coord.h"
+	"bz_food.h"
+	"bz_keys.h"
+	"bz_snake.h"
+	"bz_win.h"
+
+1546770513 e:\xsnake_cb\src\bz_base_coord.h
+	<windows.h>
+
+1544411822 e:\xsnake_cb\src\bz_clock.h
+	<iomanip>
+	<iostream>
+
+1546770514 e:\xsnake_cb\src\bz_color.h
+	<windows.h>
+
+1546740440 e:\xsnake_cb\src\bz_coord.h
+	<algorithm>
+	<conio.h>
+	<cstdio>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iomanip>
+	<iostream>
+	<limits>
+	<map>
+	<set>
+	<stdexcept>
+	<thread>
+	<vector>
+	<windows.h>
+	"bz_base_coord.h"
+
+1544409334 e:\xsnake_cb\src\bz_food.h
+	"bz_base_coord.h"
+	"bz_color.h"
+
+1544408081 e:\xsnake_cb\src\bz_keys.h
+
+1546766565 e:\xsnake_cb\src\bz_snake.h
+	"bz_base_coord.h"
+	"bz_color.h"
+
+1546834017 e:\xsnake_cb\src\bz_win.h
+	<windows.h>
+

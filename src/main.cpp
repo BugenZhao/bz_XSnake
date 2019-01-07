@@ -113,7 +113,7 @@ void show_about(bz_coord &c)
     c.move_to(0, 2);
     printf("  bz' X-Snake 游戏说明\n\n");
     printf("  单人模式：经典的贪食蛇玩法。\n");
-    printf("  双人模式：在经典贪食蛇之上，避免撞到敌人，同时利用道具和技巧，\n");
+    printf("  双人模式：在经典贪食蛇玩法之上，避免撞到敌人，同时运用道具和技巧，\n");
     printf("            引诱敌人撞向自己。\n\n");
     printf("  各色食物：\n");
     printf("      黑色：一般的食物。\n");
@@ -121,7 +121,7 @@ void show_about(bz_coord &c)
     printf("      蓝色：蛇的移动速度下降。\n");
     printf("      紫色：蛇在一段时间内进入『癫疯模式』。\n");
     printf("      黄色：让敌人或自己（单人模式）的操作反转一段时间。\n");
-    printf("      绿色：让敌人或自己（单人模式）选择原谅，不影响蛇的长度。\n\n");
+    printf("      绿色：让敌人或自己（单人模式）选择原谅。\n\n");
     printf("  自定玩法：\n");
     printf("      根据提示修改该目录下的 config.txt 文件以配置自定玩法。\n");
     c.move_to(0, 20);
@@ -382,56 +382,6 @@ Snake *move_snake(bz_coord &c, bool is_p2)
         swap(p->coord, fore_coord);
         new_head = head;
     }
-    else if (it->color == green)
-    {
-        auto fore_coord = head->coord;
-        head->coord = {c.x(), c.y()};
-        auto p = head->next;
-        while (p->next)
-        {
-            swap(p->coord, fore_coord);
-            p = p->next;
-        }
-        auto tail = p;
-        c.move_to(tail->coord);
-        printf("  ");
-        swap(p->coord, fore_coord);
-        //head->color = green;
-        new_head = head;
-        foods.erase(it);
-
-        if (!double_game)
-            green_remaining_tick = 20;
-        else if (is_p2)
-            green_remaining_tick = 20;
-        else
-            green_remaining_tick_p2 = 20;
-    }
-    else if (it->color == yellow)
-    {
-        auto fore_coord = head->coord;
-        head->coord = {c.x(), c.y()};
-        auto p = head->next;
-        while (p->next)
-        {
-            swap(p->coord, fore_coord);
-            p = p->next;
-        }
-        auto tail = p;
-        c.move_to(tail->coord);
-        printf("  ");
-        swap(p->coord, fore_coord);
-        //head->color = green;
-        new_head = head;
-        foods.erase(it);
-
-        if (!double_game)
-            reverse_remaining_tick = 15;
-        else if (is_p2)
-            reverse_remaining_tick = 7;
-        else
-            reverse_remaining_tick_p2 = 7;
-    }
     else
     {
         new_head = new Snake(c);
@@ -444,6 +394,24 @@ Snake *move_snake(bz_coord &c, bool is_p2)
         if (it->color == magenta)
             max_speed_remaining_tick = 30, last_interval_time = interval_time;
         foods.erase(it);
+    }
+    if (eat && it->color == green)
+    {
+        if (!double_game)
+            green_remaining_tick = 20;
+        else if (is_p2)
+            green_remaining_tick = 20;
+        else
+            green_remaining_tick_p2 = 20;
+    }
+    else if (eat && it->color == yellow)
+    {
+        if (!double_game)
+            reverse_remaining_tick = 15;
+        else if (is_p2)
+            reverse_remaining_tick = 7;
+        else
+            reverse_remaining_tick_p2 = 7;
     }
 
     return new_head;
@@ -464,6 +432,10 @@ bool check_bite(Snake *head, Snake *head_p2)
 
 void env_initialize()
 {
+    SetLayeredWindowAttributes(GetConsoleWindow(), 0, 240, LWA_ALPHA);
+    set_color(white, 1, 1);
+    cls();
+
     //try to read the config file
     ifstream fin("config.txt");
     fin >> _max_x >> _max_y;
@@ -492,12 +464,7 @@ void env_initialize()
     hide_cursor();
 
     //set the window
-    HWND hWnd = GetConsoleWindow();
-    RECT rc;
-    GetWindowRect(hWnd, &rc);
-    SetWindowLongPtr(hWnd,
-                     GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX);
-    SetWindowTextA(hWnd, "bz' X-Snake");
+    set_window_status("bz' X-Snake");
 
     //initialize random numbers
     srand(time(nullptr) + 1018);

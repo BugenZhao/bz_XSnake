@@ -2,13 +2,13 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="XSnake_cb" />
+		<Option title="bz_XSnake" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Release">
 				<Option platforms="Windows;" />
-				<Option output="bin/Release/XSnake_cb" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/bz_XSnake" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -26,18 +26,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="bz_base_coord.h" />
-		<Unit filename="bz_clock.h" />
-		<Unit filename="bz_color.h" />
-		<Unit filename="bz_coord.h" />
-		<Unit filename="bz_food.h" />
-		<Unit filename="bz_keys.h" />
-		<Unit filename="bz_snake.h" />
-		<Unit filename="bz_win.h" />
-		<Unit filename="icon.rc">
+		<Unit filename="rc/icon.rc">
 			<Option compilerVar="WINDRES" />
 		</Unit>
-		<Unit filename="main.cpp" />
+		<Unit filename="src/bz_base_coord.h" />
+		<Unit filename="src/bz_clock.h" />
+		<Unit filename="src/bz_color.h" />
+		<Unit filename="src/bz_coord.h" />
+		<Unit filename="src/bz_food.h" />
+		<Unit filename="src/bz_keys.h" />
+		<Unit filename="src/bz_snake.h" />
+		<Unit filename="src/bz_win.h" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

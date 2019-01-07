@@ -39,4 +39,14 @@ inline bool has_pressed(int vkey)
     return (GetAsyncKeyState(vkey) & 0x8000) ? 1 : 0;
 }
 
+inline void set_window_status(const char *title)
+{
+    HWND hWnd = GetConsoleWindow();
+    RECT rc;
+    GetWindowRect(hWnd, &rc);
+    SetWindowLongPtr(hWnd,
+                     GWL_STYLE, GetWindowLong(hWnd, GWL_STYLE) & ~WS_THICKFRAME & ~WS_MAXIMIZEBOX);
+    SetWindowTextA(hWnd, title);
+}
+
 #endif
